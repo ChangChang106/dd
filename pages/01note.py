@@ -62,6 +62,7 @@ st.subheader("📚 공유된 오답노트 보기")
 with engine.connect() as conn:
     result = conn.execute(notes_table.select().order_by(notes_table.c.timestamp.desc()))
     rows = result.fetchall()
+    rows = result.mappings().all()
 
 if rows:
     for row in rows:
